@@ -1,47 +1,36 @@
-% !TeX spellcheck = en_GB
-\documentclass{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
-\setbeamertemplate{bibliography item}{\insertbiblabel}
-
-\usepackage{common}
-
-\newcommand{\labN}{5}
-\newcommand{\labGroup}{https://gitlab.com/pika-lab/courses/ds/ay2122}
-\newcommand{\labRepo}{\labGroup/lab-\labN}
-
-\title[L\labN{} -- Presentation]{L\labN{} -- Presentation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SD Lab -- Presentation
+% Giovanni Ciatto
+% Alma Mater Studiorum - Università di Bologna
+% mailto:giovanni.ciatto@unibo.it
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\documentclass[handout]{beamer}\mode<handout>{\usetheme{default}}
 %
-\subtitle[SD]{Distributed Systems / Technologies}
-%
-\author[Ciatto \and Omicini]
-{\emph{Giovanni Ciatto} \and Andrea Omicini\\
-\texttt{giovanni.ciatto@unibo.it \and andrea.omicini@unibo.it}}
-%
-\institute[DISI, Univ. Bologna]
-{Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\\textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna a Cesena}
-%
-\date[A.Y. 2021/2022]{Academic Year 2021/2022}
-
-\setbeamercovered{transparent}
-
-\AtBeginSection[]
-{
-\begin{frame}[c]\frametitle{Next in Line\ldots}
-%    \begin{multicols}{2}
-        \tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/hide, subsubsectionstyle=hide/hide]
-%    \end{multicols}
-\end{frame}
+\documentclass[presentation]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+%\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{sd-lab-common}
+\usepackage{sd-lab-presentation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[\currentLab{} -- Presentation]{
+	Presentation
 }
-
-\AtBeginSubsection[]
-{
-    \begin{frame}[c]\frametitle{Next in Line\ldots}
-        %    \begin{multicols}{2}
-        \tableofcontents[sectionstyle=show/shaded, subsectionstyle=show/hide, subsubsectionstyle=show/hide]
-        %    \end{multicols}
-    \end{frame}
+%
+\subtitle{\courseName{} (\courseAcronym) / Module \moduleN{}}
+%
+\author[\sspeaker{\gcShort} \& \mmShort]{
+	\speaker{\gcFull} \and \mmFull
+	\\ 
+	\gcEmail \and \mmEmail
 }
-
+%
+\institute[\disiShort, \uniboShort]{\disi{} (\disiShort)\\\unibo}
+%
+\date[A.Y. \academicYear{}]{Academic Year \academicYear{}}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \maketitle
 
@@ -86,7 +75,7 @@
 
     \centering
 
-    \includegraphics[width=.8\linewidth]{img/rpc.png}
+    \includegraphics[width=.8\linewidth]{figures/rpc.png}
 
     \framebreak
 
@@ -130,7 +119,7 @@
 
     \centering
 
-    \includegraphics[width=.7\linewidth]{img/rpc-2.png}
+    \includegraphics[width=.7\linewidth]{figures/rpc-2.png}
 
     \framebreak
 
@@ -146,7 +135,7 @@
 
     \framebreak
 
-    \includegraphics[width=\linewidth]{img/rpc-3.pdf}
+    \includegraphics[width=\linewidth]{figures/rpc-3.pdf}
 
     \begin{block}{Marshalling and unmarshalling, informal definition}
         \begin{description}
@@ -238,8 +227,8 @@
         Two notable charset-related classes:
         %
         \begin{description}
-            \item[\href{https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/charset/Charset.html}{\texttt{java.nio.charset.\textit{Charset}}}] | represent a charset
-            \item[\href{https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/charset/StandardCharsets.html}{\texttt{java.nio.charset.\textit{StandardCharsets}}}] | contains a number of standard instances of \texttt{Charset}
+            \item[\href{\javadoc{java/nio/charset/Charset.html}}{\texttt{java.nio.charset.\textit{Charset}}}] --- represent a charset
+            \item[\href{\javadoc{java/nio/charset/StandardCharsets.html}}{\texttt{java.nio.charset.\textit{StandardCharsets}}}] --- contains a number of standard instances of \texttt{Charset}
         \end{description}
     \end{block}
 
@@ -247,8 +236,8 @@
         Two notable URL-econding-related classes in Java:
         %
         \begin{description}
-            \item[\href{https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URLEncoder.html}{\texttt{java.net.\textit{URLEncoder}}}] | aimed at encoding strings in percent encoding
-            \item[\href{https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URLDecoder.html}{\texttt{java.net.\textit{URLDecoder}}}] | aimed at decoding percent-encoded strings
+            \item[\href{\javadoc{java/net/URLEncoder.html}}{\texttt{java.net.\textit{URLEncoder}}}] --- aimed at encoding strings in percent encoding
+            \item[\href{\javadoc{java/net/URLDecoder.html}}{\texttt{java.net.\textit{URLDecoder}}}] --- aimed at decoding percent-encoded strings
         \end{description}
 
         \medskip
@@ -256,8 +245,8 @@
         How to use them:
         %
         \begin{description}
-            \item[\texttt{URLEncoder.encode(string, charset)}] | converts \texttt{string} in a URL-encoded string using \texttt{charset}
-            \item[\texttt{URLDecoder.decode(string, charset)}] | parses \texttt{string} as a URL-encoded string using \texttt{charset}
+            \item[\texttt{URLEncoder.encode(string, charset)}] --- converts \texttt{string} in a URL-encoded string using \texttt{charset}
+            \item[\texttt{URLDecoder.decode(string, charset)}] --- parses \texttt{string} as a URL-encoded string using \texttt{charset}
         \end{description}
     \end{block}
 
@@ -265,7 +254,7 @@
 
     Usage example:
     %
-    \lstinputlisting[language=Java,morekeywords={var}]{./code/UrlEncodeExample.java}
+    \lstinputlisting[language=Java,morekeywords={var}]{./listings/UrlEncodeExample.java}
 \end{frame}
 
 \begin{frame}%[allowframebreaks]
@@ -398,30 +387,30 @@
 
     \begin{block}{Main classes}
         \begin{description}
-            \item[\href{https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/JsonElement.html}{\texttt{com.google.gson.\textit{JsonElement}}}] | root type for data AST
-            \item[\href{https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/Gson.html}{\texttt{com.google.gson.\textit{Gson}}}] | entry point for (de)serialising \texttt{JsonElement}s
-            \item[\href{https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/GsonBuilder.html}{\texttt{com.google.gson.\textit{GsonBuilder}}}] | a builder for configuring \texttt{Gson} objects
+            \item[\href{https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/JsonElement.html}{\texttt{com.google.gson.\textit{JsonElement}}}] --- root type for data AST
+            \item[\href{https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/Gson.html}{\texttt{com.google.gson.\textit{Gson}}}] --- entry point for (de)serialising \texttt{JsonElement}s
+            \item[\href{https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/GsonBuilder.html}{\texttt{com.google.gson.\textit{GsonBuilder}}}] --- a builder for configuring \texttt{Gson} objects
         \end{description}
     \end{block}
 
     \begin{exampleblock}{\texttt{JsonElement} type hierarchy}
         \centering
-        \includegraphics[width=.5\linewidth]{./img/JsonElementCompact.pdf}
+        \includegraphics[width=.5\linewidth]{./figures/JsonElementCompact.pdf}
     \end{exampleblock}
 
     \begin{block}{\texttt{Gson} relevant methods}
         \begin{description}
-            \item[\texttt{new Gson()}] | creates a new instance of \texttt{Gson}
-            \item[\texttt{gson.toJson(object)}] | generates a JSON string from an AST (or object)
-            \item[\texttt{gson.fromJson(string, Type.class)}] | parses an AST (or an instance of \texttt{Type}) out of a JSON string
-            \item[\texttt{gson.toJson(object, writer)}] | converts an AST (or object) into a JSON string and writes it into the provided writer
-            \item[\texttt{gson.fromJson(reader, Type.class)}] | reads an AST (or an instance of \texttt{Type}) from the provided reader
+            \item[\texttt{new Gson()}] --- creates a new instance of \texttt{Gson}
+            \item[\texttt{gson.toJson(object)}] --- generates a JSON string from an AST (or object)
+            \item[\texttt{gson.fromJson(string, Type.class)}] --- parses an AST (or an instance of \texttt{Type}) out of a JSON string
+            \item[\texttt{gson.toJson(object, writer)}] --- converts an AST (or object) into a JSON string and writes it into the provided writer
+            \item[\texttt{gson.fromJson(reader, Type.class)}] --- reads an AST (or an instance of \texttt{Type}) from the provided reader
         \end{description}
     \end{block}
 
     \begin{exampleblock}{\texttt{JsonElement} relevant methods}
         \centering
-        \includegraphics[height=.7\textheight]{./img/JsonElement.pdf}
+        \includegraphics[height=.7\textheight]{./figures/JsonElement.pdf}
     \end{exampleblock}
 
 \end{frame}
@@ -431,25 +420,25 @@
 
     Consider a simple data structure such as:
     %
-    \lstinputlisting[language=Java,morekeywords={var}]{./code/Person.java}
+    \lstinputlisting[language=Java,morekeywords={var}]{./listings/Person.java}
 
     \framebreak
 
     A serialiser for \texttt{Person}s can be designed as follows:
     %
-    \lstinputlisting[language=Java,morekeywords={var},basicstyle=\tiny\ttfamily]{./code/PersonSerializer.java}
+    \lstinputlisting[language=Java,morekeywords={var},basicstyle=\tiny\ttfamily]{./listings/PersonSerializer.java}
 
     \framebreak
 
     A deserialiser for \texttt{Person}s can be designed as follows:
     %
-    \lstinputlisting[language=Java,morekeywords={var},basicstyle=\tiny\ttfamily]{./code/PersonDeserializer.java}
+    \lstinputlisting[language=Java,morekeywords={var},basicstyle=\tiny\ttfamily]{./listings/PersonDeserializer.java}
 
     \framebreak
 
     The three classes can then be exploited as follows:
     %
-    \lstinputlisting[language=Java,morekeywords={var},basicstyle=\tiny\ttfamily]{./code/PersonMain.java}
+    \lstinputlisting[language=Java,morekeywords={var},basicstyle=\tiny\ttfamily]{./listings/PersonMain.java}
 
 \end{frame}
 
